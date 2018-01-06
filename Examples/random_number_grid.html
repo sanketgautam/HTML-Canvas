@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas Function</title>
+	<style type="text/css">
+		#myCanvas{
+			margin: 20px 150px;
+			border: 1px solid;
+			background: lightgray;			
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="900" height="600">
+		Your browser doesn't support Canvas element, please upgrade/change your browser !! 
+	</canvas>
+	<script type="text/javascript">
+		var canvas,ctx;
+		window.onload = init();
+
+		function init()
+		{
+			canvas = document.querySelector("#myCanvas");
+			ctx = canvas.getContext("2d");
+			var x=0,y=0,angle=0,s,num = 10,width=canvas.width,height=canvas.height;
+			
+			while(y<=height-100)
+			{
+				num = Math.floor(Math.random()*100);
+				s="  "+num+" ";
+				draw(s,x,y,angle);
+				x+=100;
+
+				if(x>=width)
+				{
+					y+=100;
+					x=0;
+				}	
+			}
+		}
+		function draw(s,x,y,angle)
+		{	
+			ctx.save();
+			ctx.rotate(angle);
+			ctx.fillRect(x,y,100,100);
+			ctx.lineWidth = 5;
+			ctx.strokeStyle = "red";
+			ctx.strokeRect(x,y,100,100);
+			ctx.lineWidth = 3;
+			ctx.strokeStyle = "yellow";
+			ctx.fillStyle = "red";
+			ctx.font = "bold 24px arial";
+			ctx.strokeText(s,x+20,y+55);
+			ctx.fillText(s,x+20,y+55);	
+			ctx.restore();
+		}
+	</script>
+</body>
+</html>

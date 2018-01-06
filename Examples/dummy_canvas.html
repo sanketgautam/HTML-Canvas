@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Canavas - 2D Context</title>
+	<meta encoding="utd-8"/>
+	<style type="text/css">
+		#myCanvas{
+			border: 1px solid;
+			background: pink;	
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="960px" height="500px">
+		If, you're seeing this message, the canvas is not supported by your browser.
+		It would be better go get updates <a href="http://www.skg.com/update/useAgent/">here</a> or 
+		view fallback for you browser, by clicking <a href="http://www.skg.com/fallback/canvas/2D/">here</a>
+	</canvas>
+	<script type="text/javascript">
+		window.onload = init;
+		function init()
+		{	
+
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext('2d');
+			ctx.fillStyle = 'red';
+			ctx.fillRect(10,10,100,100);
+			ctx.lineWidth=10;
+			ctx.strokeStyle = 'yellow';
+			ctx.strokeRect(120,10,100,100);
+			//ctx.clearRect(10,10,100,100);
+			ctx.fillStyle = 'black';
+			ctx.font = 'bold 16pt calibri';
+			ctx.fillText('Hello, This is SKG !',70,22);
+		} 
+	</script>
+</body>
+</html>

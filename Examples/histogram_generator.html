@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Histogram</title>
+	<style type="text/css">
+		#myCanvas{
+			margin: 20px 150px;
+			border: 1px solid;
+			background: lightgreen;			
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<canvas id="myCanvas" height="600px" width="1000px">
+			<h1>Sorry ! There is some problem with this browser, please click <a href="mailto:webmaster@skg.xyz">here</a> to inform SKG</h1>
+		</canvas>
+		<script type="text/javascript">
+			var canvas,ctx;
+			window.onload = init;
+
+			function init()
+			{
+				canvas = document.querySelector("#myCanvas");
+				ctx = canvas.getContext('2d');
+				ctx.font = '16px arial';
+				var a = new Array(24,55,66,89,70,124,67,23,98,120);
+				drawGraph(a);
+			} 
+			function drawGraph(a)
+			{
+				var length = a.length;
+				var y=120;
+				ctx.font = '24px arial';
+				ctx.fillText("Histogram",450,20);
+				ctx.font = '18px arial';
+				for(var i=0; i<length; i++){
+					if(i%2==0)
+						ctx.fillStyle = "black";
+					else
+						ctx.fillStyle = "red";
+					drawBar(y,a[i]);
+					y+=40;
+				}
+			}
+			function drawBar(y,height)
+			{
+				var x=0;
+				height*=4;
+				ctx.fillRect(x,y,height,30);
+				ctx.fillStyle = 'brown';
+				ctx.fillText(height/4,x+height+5,y+20);
+			}
+		</script>
+	</main>
+</body>
+</html>

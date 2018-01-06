@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image</title>
+	<style type="text/css">
+		#myCanvas{
+			margin: 20px 150px;
+			border: 1px solid;
+			background: lightblue;			
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<canvas id="myCanvas" height="600px" width="1000px">
+			<h1>Sorry ! There is some problem with this browser, please click <a href="mailto:webmaster@skg.xyz">here</a> to inform SKG</h1>
+		</canvas>
+		<script type="text/javascript">
+			var canvas,ctx;
+			window.onload = init;
+
+			function init()
+			{
+				canvas = document.querySelector("#myCanvas");
+				ctx = canvas.getContext('2d');
+				/*
+					We have measured time taken to draw the figure using both path drawing mode and the immediate drawing mode, and we found that, path drawing mode is faster as parallelization is possible in this case, by the hardaware's GPU. 
+
+					NOTE:- Here, I have shown only one example,i.e. of immediate drwaing mode,but you can modify it to see the changes, when we draw using path drawing mode !!    
+				*/
+				console.time("Time taken to draw : ");
+				drawRectangles();
+				console.timeEnd("Time taken to draw : ");
+			} 
+			function drawRectangles()
+			{
+				var i=0;
+				w = canvas.width;
+				h = canvas.height;
+				for(i=0;i<1000;i++)
+				{
+					var x = Math.random()*w/2;
+					var y = Math.random()*h/2;
+					var width = Math.random()*w;
+					var height = Math.random()*h;
+					if(i%2==0)
+						ctx.strokeStyle = 'black';
+					else if(i%3 ==0)
+						ctx.strokeStyle = 'red';
+					else if(i%5 ==0)
+						ctx.strokeStyle = 'green';
+					else if(i%7 ==0)
+						ctx.strokeStyle = 'yellow';
+					else if(i%11 ==0)
+						ctx.strokeStyle = 'pink';
+					else if(i%13 ==0)
+						ctx.strokeStyle = 'orange';
+					ctx.strokeRect(x,y,width,height);
+				}	
+			}
+		</script>
+	</main>
+</body>
+</html>
